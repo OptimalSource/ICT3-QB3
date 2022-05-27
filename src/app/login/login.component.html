@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-6">
+                <h1 class="mt-5 p-2 ms-5">Welcome to BookStore</h1>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 margin background-color rounded">
+            <div class="card shadow mb-3">
+                <div class="card-header text-center">
+                    <h1>Login</h1>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="form" class="p-5" (ngSubmit)="onLogin(form)">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <div [ngClass]="{'error-border' : email.invalid && (email.dirty || email.touched)}">
+                                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="email" />
+                            </div>
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                                [ngClass]="{'error-msg-color' : email.errors}">
+                                <div *ngIf="email.errors?.required">
+                                    please enter email address.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <div [ngClass]="{'error-border' : password.invalid && (password.dirty || password.touched)}">
+                                <input type="text" class="form-control" id="exampleInputPassword1" formControlName="password" />
+                            </div>
+                            <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                                [ngClass]="{'error-msg-color' : password.errors}">
+                                <div *ngIf="password.errors?.required">
+                                    please enter your password.
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="!isCredentialsValid" class="mb-3" [ngClass]="{'error-msg-color' : !isCredentialsValid}">
+                            Wrong Credentials
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
